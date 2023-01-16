@@ -1,12 +1,9 @@
 <template>
   <v-app>
-    <dashboard-core-app-bar />
-
-    <dashboard-core-drawer />
-
+    <dashboard-core-app-bar v-if="!isLogin && !isRegister && !isForgetPassword"/>
+    <dashboard-core-drawer v-if="!isLogin && !isRegister && !isForgetPassword"/>
     <dashboard-core-view />
-
-    <dashboard-core-settings />
+    <dashboard-core-footer/>
   </v-app>
 </template>
 
@@ -19,8 +16,19 @@
       DashboardCoreDrawer: () => import('./components/core/Drawer'),
       DashboardCoreSettings: () => import('./components/core/Settings'),
       DashboardCoreView: () => import('./components/core/View'),
+      DashboardCoreFooter: () => import('./components/core/Footer'),
     },
-
+    computed:{
+      isLogin(){
+        return this.$route.name==="Login"
+      },
+      isRegister(){
+        return this.$route.name==="Register"
+      },
+      isForgetPassword(){
+        return this.$route.name==="ForgetPassword"
+      }
+    },
     data: () => ({
       expandOnHover: false,
     }),

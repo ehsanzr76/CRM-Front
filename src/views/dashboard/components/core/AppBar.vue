@@ -53,6 +53,11 @@
 
     <div class="mx-3" />
 
+    <v-btn outlined small class="ml-3" light>
+      <router-link :to="{ name: 'Logout' }" class="text-decoration-none" style="color: black">خروج</router-link>
+      <v-icon>mdi-logout</v-icon>
+    </v-btn>
+
     <v-btn
       class="ml-2"
       min-width="0"
