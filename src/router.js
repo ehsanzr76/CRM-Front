@@ -46,22 +46,28 @@ const router = new Router({
                 {
                     name: 'داشبورد',
                     path: '',
-                    meta:{
-                        requiresAuth:true ////user should be login
+                    meta: {
+                        requiresAuth: true ////user should be login
                     },
                     component: () => import('@/views/dashboard/Dashboard'),
                 },
+
+                ///employees
                 {
-                    name: 'Typography',
-                    path: 'components/typography',
-                    component: () => import('@/views/dashboard/component/Typography'),
+                    name: 'کارمندان',
+                    path: '/employees',
+                    component: () => import('@/views/employee/Index'),
                 },
-                // Tables
+
+
+                ///create-employee
                 {
-                    name: 'Regular Tables',
-                    path: 'tables/regular-tables',
-                    component: () => import('@/views/dashboard/tables/RegularTables'),
+                    name: 'کارمند جدید',
+                    path: '/create/employee',
+                    component: () => import('@/views/employee/Create'),
                 },
+
+
                 // Maps
                 {
                     name: 'Google Maps',
@@ -83,13 +89,13 @@ router.beforeEach((to, from, next) => {
     // check if the route requires authentication and user is not logged in
     if (to.matched.some(route => route.meta.requiresAuth) && !store.state.isLoggedIn) {
         // redirect to login page
-        next({ name: 'Login' })
+        next({name: 'Login'})
         return
     }
 
     // if logged in redirect to dashboard
-    if(to.path === '/login' && store.state.isLoggedIn) {
-        next({ name: 'Dashboard' })
+    if (to.path === '/login' && store.state.isLoggedIn) {
+        next({name: 'Dashboard'})
         return
     }
 

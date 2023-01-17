@@ -112,9 +112,9 @@
           to: '/',
         },
         {
-          icon: 'mdi-account',
-          title: 'کاربران',
-          to: '/pages/user',
+          icon: 'mdi-account-tie',
+          title: 'کارمندان',
+          to: '/employees',
         },
         {
           title: 'rtables',

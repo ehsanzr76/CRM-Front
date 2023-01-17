@@ -27,7 +27,7 @@ const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 4000,
+  timer: 3000,
   timerProgressBar: true,
   didOpen: (toast) => {
     toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -36,3 +36,51 @@ const Toast = Swal.mixin({
 });
 window.Toast = Toast;
 //// End SweetAlert
+
+
+
+/// Start Noty
+window.Noty = require('noty');
+class Notification{
+  success(){
+    new Noty({
+      type:'success',
+      layout:'topRight',
+      text:'با موفقیت انجام شد.',
+      timeout:1000,
+    }).show();
+  }
+
+
+  alert(){
+    new Noty({
+      type:'alert',
+      layout:'topRight',
+      text:'آیا مطمين هستید؟',
+      timeout:1000,
+    }).show();
+  }
+
+
+  error(){
+    new Noty({
+      type:'alert',
+      layout:'topRight',
+      text:'اشتباهی پیش آمده است',
+      timeout:1000,
+    }).show();
+  }
+
+
+  warning(){
+    new Noty({
+      type:'warning',
+      layout:'topRight',
+      text:'اخطار!اشتباهی پیش آمده است',
+      timeout:1000,
+    }).show();
+  }
+}
+export default Notification = new Notification()
+
+///End Noty

@@ -100,9 +100,14 @@ export default {
         this.$router.push('/')
       }).catch(err=>{
         if (err.response.status===422){
-          this.errors = err.response.data.errors
+          this.errors = err.response.data.errors;
         }
-      })
+      }).catch(
+          Toast.fire({
+            icon: 'warning',
+            title: '.ایمیل یا رمز عبور صحیح نیست'
+          })
+      )
     }
   }
 }
