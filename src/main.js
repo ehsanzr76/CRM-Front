@@ -47,7 +47,7 @@ class Notification{
       type:'success',
       layout:'topRight',
       text:'با موفقیت انجام شد.',
-      timeout:1000,
+      timeout:3000,
     }).show();
   }
 
@@ -77,7 +77,16 @@ class Notification{
       type:'warning',
       layout:'topRight',
       text:'اخطار!اشتباهی پیش آمده است',
-      timeout:1000,
+      timeout:2000,
+    }).show();
+  }
+
+  image_validation(){
+    new Noty({
+      type:'error',
+      layout:'topLeft',
+      text:'!حجم تصویر بیشتر از 1 مگابایت است',
+      timeout:2000,
     }).show();
   }
 }

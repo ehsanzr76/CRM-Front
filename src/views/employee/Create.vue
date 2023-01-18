@@ -75,12 +75,14 @@
               cols="12"
               md="12"
           >
-            <v-text-field
-                label="عکس"
-                type="file"
-                class="purple-input"
-            />
+            <label>عکس</label><br><br>
+            <input type="file" class="custom-file-input" id="customFile" @change="onFileSelected">
           </v-col>
+
+          <div>
+            <img :src="form.photo" style="height: 50px;width: 50px">
+          </div>
+
 
           <v-col cols="12">
             <v-textarea
@@ -94,7 +96,8 @@
               class="text-center"
           >
             <v-card-actions class="justify-center">
-              <v-btn color="primary" outlined dark style="font-size: medium" class="mb-5" @click.prevent="EmployeeInsert"
+              <v-btn color="primary" outlined dark style="font-size: medium" class="mb-5"
+                     @click.prevent="EmployeeInsert"
               >
                 <span class="px-10">ثبت</span>
               </v-btn>
@@ -107,6 +110,9 @@
 </template>
 
 <script>
+
+import main from "@/main";
+
 export default {
   name: "Create",
   data() {
@@ -124,8 +130,21 @@ export default {
       errors: {}
     }
   },
-  methods:{
-    EmployeeInsert(){
+  methods: {
+    onFileSelected(event) {
+      let file = event.target.files[0];
+      if (file.size > 1048770) {
+        main.image_validation()
+      } else {
+        let reader = new FileReader();
+        reader.onload = event => {
+          this.form.photo = event.target.result
+          console.log(event.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    },
+    EmployeeInsert() {
 
     }
   }
