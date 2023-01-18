@@ -89,6 +89,15 @@ class Notification{
       timeout:2000,
     }).show();
   }
+
+  image_validation() {
+    new Noty({
+      type: 'error',
+      layout: 'topLeft',
+      text: '!حجم تصویر بیشتر از 1 مگابایت است',
+      timeout: 2000,
+    }).show();
+  }
 }
 export default Notification = new Notification()
 
