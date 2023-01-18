@@ -14,6 +14,9 @@
             <v-text-field
                 label="نام و نام خانوادگی"
                 type="name"
+                v-model="form.name"
+                :error="errors.name"
+                :error-messages="errors.name"
             />
           </v-col>
 
@@ -25,6 +28,9 @@
                 class="purple-input"
                 label="ایمیل"
                 type="email"
+                v-model="form.email"
+                :error="errors.email"
+                :error-messages="errors.email"
             />
           </v-col>
 
@@ -36,6 +42,9 @@
                 label="شماره موبایل"
                 class="purple-input"
                 type="phone"
+                v-model="form.phone"
+                :error="errors.phone"
+                :error-messages="errors.phone"
             />
           </v-col>
 
@@ -47,6 +56,9 @@
                 label="تاریخ عضویت"
                 class="purple-input"
                 type="date"
+                v-model="form.joining_date"
+                :error="errors.joining_date"
+                :error-messages="errors.joining_date"
             />
           </v-col>
 
@@ -58,6 +70,9 @@
                 label="کد ملی"
                 type="text"
                 class="purple-input"
+                v-model="form.nid"
+                :error="errors.nid"
+                :error-messages="errors.nid"
             />
           </v-col>
 
@@ -68,6 +83,9 @@
             <v-text-field
                 label="حقوق"
                 class="purple-input"
+                v-model="form.sallery"
+                :error="errors.sallery"
+                :error-messages="errors.sallery"
             />
           </v-col>
 
@@ -76,18 +94,23 @@
               md="12"
           >
             <label>عکس</label><br><br>
-            <input type="file" class="custom-file-input" id="customFile" @change="onFileSelected">
+            <input type="file" class="custom-file-input" id="customFile" @change="onFileSelected"
+            >
           </v-col>
 
           <div>
             <img :src="form.photo" style="height: 50px;width: 50px">
           </div>
 
+          </v-col>
 
           <v-col cols="12">
             <v-textarea
                 class="purple-input"
                 label="آدرس محل سکونت"
+                v-model="form.address"
+                :error="errors.address"
+                :error-messages="errors.address"
             />
           </v-col>
 
@@ -110,8 +133,8 @@
 </template>
 
 <script>
-
 import main from "@/main";
+import axios from "axios";
 
 export default {
   name: "Create",
@@ -143,9 +166,19 @@ export default {
         };
         reader.readAsDataURL(file);
       }
-    },
-    EmployeeInsert() {
 
+    },
+
+    EmployeeInsert() {
+      axios.post('http://localhost/api/auth/employee', this.form)
+          .then(() => {
+            this.$router.push('/employees')
+            Swal.fire(
+                '!موفق',
+                '.کارمند ثبت شد',
+                'success'
+            )
+          }).catch(error => this.errors = error.response.data.errors)
     }
   }
 }

@@ -4,7 +4,7 @@
       <v-col cols="12" md="9">
         <v-card class="elevation-8" outlined rounded>
           <v-toolbar dark color="gray">
-            <v-toolbar-title>فرم ثبت نام</v-toolbar-title>
+            <v-toolbar-title>ثبت نام</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-form  @submit.prevent ="register">
