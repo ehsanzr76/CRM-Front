@@ -23,76 +23,41 @@
             نام
           </th>
           <th class="primary--text">
-            Country
+            شماره موبایل
           </th>
           <th class="primary--text">
-            City
+            کد ملی
+          </th>
+          <th class="primary--text">
+            تاریخ عضویت
           </th>
           <th class="text-right primary--text">
-            Salary
+            حقوق
           </th>
+          <th class="primary--text">
+            عکس
+          </th>
+       <th class="primary--text">
+            عملیات
+          </th>
+
         </tr>
         </thead>
 
         <tbody>
-        <tr>
-          <td>1</td>
-          <td>Dakota Rice</td>
-          <td>Niger</td>
-          <td>Oud-Turnhout</td>
-          <td class="text-right">
-            $36,738
+        <tr v-for="employee in employees" :key="employee.id">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.phone }}</td>
+          <td>{{ employee.nid }}</td>
+          <td>{{ employee.joining_date }}</td>
+          <td>{{ employee.salary }}</td>
+          <td><img :src="employee.photo" style="height: 50px;width: 50px"></td>
+          <td>
+              <router-link to="#" style="text-decoration: none"><v-icon color="red" title="حذف">mdi-delete</v-icon></router-link>
+              <router-link to="#" style="text-decoration: none"><v-icon color="#367cba" title="ویرایش">mdi-human-edit</v-icon></router-link>
           </td>
-        </tr>
 
-        <tr>
-          <td>2</td>
-          <td>Minverva Hooper</td>
-          <td>Curaçao</td>
-          <td>Sinaas-Waas</td>
-          <td class="text-right">
-            $23,789
-          </td>
-        </tr>
-
-        <tr>
-          <td>3</td>
-          <td>Sage Rodriguez</td>
-          <td>Netherlands</td>
-          <td>Baileux</td>
-          <td class="text-right">
-            $56,142
-          </td>
-        </tr>
-
-        <tr>
-          <td>4</td>
-          <td>Philip Chaney</td>
-          <td>Korea, South</td>
-          <td>Overland Park</td>
-          <td class="text-right">
-            $38,735
-          </td>
-        </tr>
-
-        <tr>
-          <td>5</td>
-          <td>Doris Greene</td>
-          <td>Malawi</td>
-          <td>Feldkirchen in Kärnten</td>
-          <td class="text-right">
-            $63,542
-          </td>
-        </tr>
-
-        <tr>
-          <td>6</td>
-          <td>Mason Porter</td>
-          <td>Chile</td>
-          <td>Gloucester</td>
-          <td class="text-right">
-            $78,615
-          </td>
         </tr>
         </tbody>
       </v-simple-table>
@@ -104,8 +69,25 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-name: "Index"
+  name: "Index",
+  data(){
+    return {
+      employees: []
+    }
+  },
+  methods: {
+    allEmployees() {
+      axios.get('http://localhost/api/employee')
+          .then(({data}) => (this.employees = data))
+          .catch()
+    }
+  },
+  created() {
+    this.allEmployees()
+  }
 }
 </script>
 

@@ -14,9 +14,11 @@
             <v-text-field
                 label="نام و نام خانوادگی"
                 type="name"
+                name="name"
                 v-model="form.name"
                 :error="errors.name"
                 :error-messages="errors.name"
+                prepend-inner-icon="mdi-account"
             />
           </v-col>
 
@@ -28,9 +30,11 @@
                 class="purple-input"
                 label="ایمیل"
                 type="email"
+                name="email"
                 v-model="form.email"
                 :error="errors.email"
                 :error-messages="errors.email"
+                prepend-inner-icon="mdi-email"
             />
           </v-col>
 
@@ -45,6 +49,7 @@
                 v-model="form.phone"
                 :error="errors.phone"
                 :error-messages="errors.phone"
+                prepend-inner-icon="mdi-phone"
             />
           </v-col>
 
@@ -59,6 +64,7 @@
                 v-model="form.joining_date"
                 :error="errors.joining_date"
                 :error-messages="errors.joining_date"
+
             />
           </v-col>
 
@@ -73,6 +79,7 @@
                 v-model="form.nid"
                 :error="errors.nid"
                 :error-messages="errors.nid"
+                prepend-inner-icon="mdi-badge-account"
             />
           </v-col>
 
@@ -83,9 +90,10 @@
             <v-text-field
                 label="حقوق"
                 class="purple-input"
-                v-model="form.sallery"
-                :error="errors.sallery"
-                :error-messages="errors.sallery"
+                v-model="form.salary"
+                :error="errors.salary"
+                :error-messages="errors.salary"
+                prepend-inner-icon="mdi-cash-100"
             />
           </v-col>
 
@@ -93,7 +101,7 @@
               cols="12"
               md="12"
           >
-            <label>عکس</label><br><br>
+            <label >عکس</label><br><br>
             <input type="file" class="custom-file-input" id="customFile" @change="onFileSelected"
             >
           </v-col>
@@ -111,6 +119,7 @@
                 v-model="form.address"
                 :error="errors.address"
                 :error-messages="errors.address"
+                prepend-inner-icon="mdi-map-marker"
             />
           </v-col>
 
@@ -144,7 +153,7 @@ export default {
         name: null,
         email: null,
         phone: null,
-        sallery: null,
+        salary: null,
         address: null,
         photo: null,
         nid: null,
@@ -170,12 +179,12 @@ export default {
     },
 
     EmployeeInsert() {
-      axios.post('http://localhost/api/auth/employee', this.form)
+      axios.post('http://localhost/api/employee', this.form)
           .then(() => {
             this.$router.push('/employees')
             Swal.fire(
                 '!موفق',
-                '.کارمند ثبت شد',
+                'کارمند با موفقیت ثبت شد',
                 'success'
             )
           }).catch(error => this.errors = error.response.data.errors)
