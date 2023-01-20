@@ -1,7 +1,7 @@
 <template>
   <base-material-card
       icon="mdi-pencil"
-      title="ایجاد کارمند جدید"
+      title="ویرایش کارمند"
       class="px-5 py-3"
   >
     <v-form enctype="multipart/form-data">
@@ -129,7 +129,7 @@
           >
             <v-card-actions class="justify-center">
               <v-btn color="primary" outlined dark style="font-size: medium" class="mb-5"
-                     @click.prevent="EmployeeInsert"
+                     @click.prevent="EmployeeUpdate"
               >
                 <span class="px-10">ثبت</span>
               </v-btn>
@@ -146,21 +146,28 @@ import main from "@/main";
 import axios from "axios";
 
 export default {
-  name: "Create",
+  name: "Edit",
   data() {
     return {
       form: {
-        name: null,
-        email: null,
-        phone: null,
-        salary: null,
-        address: null,
-        photo: null,
-        nid: null,
-        joining_date: null,
+        name: '',
+        email: '',
+        phone: '',
+        salary: '',
+        address: '',
+        photo: '',
+        newphoto: '',
+        nid: '',
+        joining_date: '',
       },
       errors: {}
     }
+  },
+  created() {
+    let id = this.$route.params.id
+    axios.get('http://localhost/api/employee/' + id)
+    .then(({data})=>(this.form = data))
+    .catch(console.log('error'))
   },
   methods: {
     onFileSelected(event) {
@@ -170,21 +177,21 @@ export default {
       } else {
         let reader = new FileReader();
         reader.onload = event => {
-          this.form.photo = event.target.result
-          console.log(event.target.result);
+          this.form.newphoto = event.target.result
         };
         reader.readAsDataURL(file);
       }
 
     },
 
-    EmployeeInsert() {
-      axios.post('http://localhost/api/employee', this.form)
+    EmployeeUpdate() {
+      let id = this.$route.params.id
+      axios.patch('http://localhost/api/employee/'+id , this.form)
           .then(() => {
             this.$router.push('/employees')
             Swal.fire(
                 '!موفق',
-                'کارمند با موفقیت ثبت شد',
+                'کارمند با موفقیت ویرایش شد',
                 'success'
             )
           }).catch(error => this.errors = error.response.data.errors)

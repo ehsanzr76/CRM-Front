@@ -63,7 +63,7 @@
           <td><img :src="employee.photo" style="height: 40px;width: 40px"></td>
           <td>
             <a @click="deleteEmployee(employee.id)" style="text-decoration: none"><v-icon color="red" title="حذف">mdi-delete</v-icon></a>
-              <a href ="#" style="text-decoration: none"><v-icon color="#367cba" title="ویرایش">mdi-human-edit</v-icon></a>
+            <router-link :to="{name:'ویرایش کارمند' , params:{id:employee.id}}" style="text-decoration: none"><v-icon color="#367cba" title="ویرایش">mdi-human-edit</v-icon></router-link>
           </td>
 
         </tr>

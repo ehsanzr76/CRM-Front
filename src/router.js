@@ -68,6 +68,14 @@ const router = new Router({
                 },
 
 
+                ///edit-employee
+                {
+                    name: 'ویرایش کارمند',
+                    path: '/edit/employee/:id',
+                    component: () => import('@/views/employee/Edit'),
+                },
+
+
                 // Maps
                 {
                     name: 'Google Maps',
