@@ -117,9 +117,9 @@
           to: '/employees',
         },
         {
-          title: 'rtables',
-          icon: 'mdi-clipboard-outline',
-          to: '/tables/regular-tables',
+          title: 'تامین کنندگان',
+          icon: 'mdi-cart-arrow-right',
+          to: '/suppliers',
         },
         {
           title: 'typography',

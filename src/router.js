@@ -42,6 +42,9 @@ const router = new Router({
                     component: () => import('@/views/auth/Logout'),
                 },
 
+
+//////////////////////////////////////////////////////////////////////////
+
                 /// dashboard
                 {
                     name: 'داشبورد',
@@ -52,28 +55,50 @@ const router = new Router({
                     component: () => import('@/views/dashboard/Dashboard'),
                 },
 
+ //////////////////////////////////////////////////////////////////////////
+
                 ///employees
                 {
                     name: 'کارمندان',
                     path: '/employees',
                     component: () => import('@/views/employee/Index'),
                 },
-
-
                 ///create-employee
                 {
                     name: 'کارمند جدید',
                     path: '/create/employee',
                     component: () => import('@/views/employee/Create'),
                 },
-
-
                 ///edit-employee
                 {
                     name: 'ویرایش کارمند',
                     path: '/edit/employee/:id',
                     component: () => import('@/views/employee/Edit'),
                 },
+
+//////////////////////////////////////////////////////////////////////////
+
+                ///suppliers
+                {
+                    name: 'تامین کنندگان',
+                    path: '/suppliers',
+                    component: () => import('@/views/supplier/Index'),
+                },
+                ///create-supplier
+                {
+                    name: 'تامین کنندگان',
+                    path: '/create/supplier',
+                    component: () => import('@/views/supplier/Create'),
+                },
+                ///edit-supplier
+                {
+                    name: 'ویرایش تامین کننده',
+                    path: '/edit/supplier/:id',
+                    component: () => import('@/views/supplier/Edit'),
+                },
+
+
+ //////////////////////////////////////////////////////////////////////////
 
 
                 // Maps
