@@ -131,7 +131,7 @@
               <v-btn color="primary" outlined dark style="font-size: medium" class="mb-5"
                      @click.prevent="EmployeeUpdate"
               >
-                <span class="px-10">ثبت</span>
+                <span class="px-10">ویرایش</span>
               </v-btn>
             </v-card-actions>
           </v-col>

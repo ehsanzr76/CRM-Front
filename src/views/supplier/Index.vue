@@ -98,7 +98,7 @@ export default {
     },
     async deleteSupplier(id){
       Swal.fire({
-        title: 'آیا مطمعن هستید؟',
+        title: 'آیا مطمئن هستید؟',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
