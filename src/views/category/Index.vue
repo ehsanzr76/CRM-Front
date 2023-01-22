@@ -41,10 +41,10 @@
         <tr v-for="category in filtersearch" :key="category.id">
           <td>{{ category.id }}</td>
           <td>{{ category.name }}</td>
+          <td>
             <a @click="deleteCategory(category.id)" style="text-decoration: none"><v-icon color="red" title="حذف">mdi-delete</v-icon></a>
             <router-link :to="{name:'ویرایش دسته بندی' , params:{id:category.id}}" style="text-decoration: none"><v-icon color="#175096" title="ویرایش">mdi-pencil-box-multiple</v-icon></router-link>
           </td>
-
         </tr>
         </tbody>
       </v-simple-table>
@@ -74,7 +74,7 @@ export default {
     }
   },
   methods: {
-    allSuppliers() {
+    allCategories() {
       axios.get('http://localhost/api/category')
           .then(({data}) => (this.categories = data))
           .catch()
@@ -108,7 +108,7 @@ export default {
     }
   },
   created() {
-    this.allSuppliers()
+    this.allCategories()
   }
 }
 </script>
