@@ -19,6 +19,7 @@
         icon="mdi-clipboard-text"
         title="لیست تامین کنندگان"
         class="px-5 py-3"
+        style="background-color: #a2a8a3"
     >
       <v-simple-table>
 
