@@ -86,7 +86,7 @@ const router = new Router({
                 },
                 ///create-supplier
                 {
-                    name: 'تامین کنندگان',
+                    name: 'تامین کننده جدید',
                     path: '/create/supplier',
                     component: () => import('@/views/supplier/Create'),
                 },
@@ -100,18 +100,23 @@ const router = new Router({
 
  //////////////////////////////////////////////////////////////////////////
 
-
-                // Maps
+                ///categories
                 {
-                    name: 'Google Maps',
-                    path: 'maps/google-maps',
-                    component: () => import('@/views/dashboard/maps/GoogleMaps'),
+                    name: 'دسته بندی ها',
+                    path: '/categories',
+                    component: () => import('@/views/category/Index'),
                 },
-                // Upgrade
+                ///create-category
                 {
-                    name: 'Upgrade',
-                    path: 'upgrade',
-                    component: () => import('@/views/dashboard/Upgrade'),
+                    name: 'دسته بندی جدید',
+                    path: '/create/category',
+                    component: () => import('@/views/category/Create'),
+                },
+                ///edit-category
+                {
+                    name: 'ویرایش دسته بندی',
+                    path: '/edit/category/:id',
+                    component: () => import('@/views/category/Edit'),
                 },
             ],
         },
