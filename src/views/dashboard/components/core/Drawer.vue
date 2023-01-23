@@ -126,9 +126,9 @@
           to: '/categories',
         },
         {
-          title: 'google',
-          icon: 'mdi-map-marker',
-          to: '/maps/google-maps',
+          title: 'محصولات',
+          icon: 'mdi-bag-checked',
+          to: '/products',
         },
         {
           title: 'notifications',

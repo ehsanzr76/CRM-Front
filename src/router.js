@@ -118,6 +118,28 @@ const router = new Router({
                     path: '/edit/category/:id',
                     component: () => import('@/views/category/Edit'),
                 },
+
+
+ //////////////////////////////////////////////////////////////////////////
+
+                ///products
+                {
+                    name: 'محصولات',
+                    path: '/products',
+                    component: () => import('@/views/product/Index'),
+                },
+                ///create-product
+                {
+                    name: 'محصول جدید',
+                    path: '/create/product',
+                    component: () => import('@/views/product/Create'),
+                },
+                ///edit-category
+                {
+                    name: 'ویرایش محصول',
+                    path: '/edit/product/:id',
+                    component: () => import('@/views/product/Edit'),
+                },
             ],
         },
     ],
